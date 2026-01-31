@@ -242,8 +242,8 @@
 
         .glasses-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 380px;
+            height: 380px;
             background: radial-gradient(circle, var(--card-bg) 0%, var(--primary-bg) 70%);
             border-radius: 50%;
             display: flex;
@@ -254,48 +254,66 @@
 
         .ar-interface {
             position: relative;
-            width: 200px;
-            height: 200px;
+            width: 280px;
+            height: 280px;
         }
 
         .hud-element {
             position: absolute;
-            background: rgba(0, 247, 255, 0.15);
+            background: rgba(0, 247, 255, 0.2);
             border: 1px solid var(--accent-cyan);
-            border-radius: 10px;
-            padding: 8px 12px;
+            border-radius: 12px;
+            padding: 10px 15px;
             font-size: 0.9rem;
             backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+            z-index: 2;
+            white-space: nowrap;
             animation: float 6s ease-in-out infinite;
         }
 
+        /* Исправленные позиции для предотвращения наложения */
         .hud-element.movie {
             top: 10%;
-            left: 0;
+            left: 10%;
             animation-delay: 0s;
         }
 
         .hud-element.nav {
-            top: 50%;
-            right: 0;
-            animation-delay: 2s;
+            top: 10%;
+            right: 10%;
+            animation-delay: 1.5s;
         }
 
         .hud-element.game {
-            bottom: 20%;
-            left: 10%;
-            animation-delay: 4s;
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 3s;
         }
 
         .hud-element.notif {
             bottom: 10%;
             right: 10%;
-            animation-delay: 1s;
+            animation-delay: 4.5s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { 
+                transform: translateY(0) translateX(0); 
+                box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+            }
+            25% { 
+                transform: translateY(-8px) translateX(5px); 
+                box-shadow: 0 8px 20px rgba(0, 247, 255, 0.3);
+            }
+            50% { 
+                transform: translateY(-5px) translateX(-5px); 
+                box-shadow: 0 10px 25px rgba(0, 247, 255, 0.4);
+            }
+            75% { 
+                transform: translateY(-3px) translateX(3px); 
+                box-shadow: 0 7px 18px rgba(0, 247, 255, 0.3);
+            }
         }
 
         /* ===== PROBLEM/SOLUTION ===== */
@@ -834,6 +852,18 @@
             .timer-block span {
                 font-size: 2.5rem;
             }
+            .glasses-container {
+                width: 300px;
+                height: 300px;
+            }
+            .ar-interface {
+                width: 220px;
+                height: 220px;
+            }
+            .hud-element {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -859,6 +889,18 @@
             }
             .timer-block span {
                 font-size: 2rem;
+            }
+            .glasses-container {
+                width: 250px;
+                height: 250px;
+            }
+            .ar-interface {
+                width: 180px;
+                height: 180px;
+            }
+            .hud-element {
+                font-size: 0.7rem;
+                padding: 6px 10px;
             }
         }
     </style>
@@ -1233,4 +1275,4 @@
         document.querySelectorAll('.feature-card, .solution-card, .spec').forEach(el => observer.observe(el));
     </script>
 </body>
-</html>
+    </html>
